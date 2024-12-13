@@ -1,6 +1,8 @@
 #include <unistd.h>
 #include <cassert>
 #include <sys/wait.h>
+#include <cstring>
+#include <sched.h>
 
 #include "cmd.hh"
 #include "errors.hh"
@@ -82,27 +84,39 @@ auto Cmd::get_execv_args_char() const -> std::vector<const char *> {
 auto Cmd::run() -> void {
     if (exit_cmd_) exit(0);
 
-    pid_t pid = fork();
+    // Allocate stack for child process (SIZE IS ARBITRARY AND MUST BE SUFFICIENT!)
+    constexpr size_t stack_size = 1024 * 1024; // 1MB - adjust as needed
+    auto* stack = new uint8_t[stack_size];
 
-    if (pid == 0) {
-        if (input_pipe_) {
-            dup2((*input_pipe_)->get_read_end(), STDIN_FILENO);
-            (*input_pipe_)->close_read_end();
-            (*input_pipe_)->close_write_end();
-        }
+    memset(stack + stack_size - 1, 0, 1); // Ensure stack is initialized
 
-        if (output_pipe_) {
-            dup2((*output_pipe_)->get_write_end(), STDOUT_FILENO);
-            (*output_pipe_)->close_write_end();
-            (*output_pipe_)->close_read_end();
-        }
 
-        const auto args = get_execv_args_char();
+    int pid = clone(
+        [](void* arg) -> int {
+            Cmd* cmd = static_cast<Cmd*>(arg);
+            if (cmd->input_pipe_) {
+                dup2((*cmd->input_pipe_)->get_read_end(), STDIN_FILENO);
+                (*cmd->input_pipe_)->close_read_end();
+                (*cmd->input_pipe_)->close_write_end();
+            }
+            if (cmd->output_pipe_) {
+                dup2((*cmd->output_pipe_)->get_write_end(), STDOUT_FILENO);
+                (*cmd->output_pipe_)->close_write_end();
+                (*cmd->output_pipe_)->close_read_end();
+            }
 
-        execvp(executable_file_.c_str(), (char* const*)args.data());
-        perror("Ошибка execvp.");
-        exit(1);
-    } else {
+            const auto args = cmd->get_execv_args_char();
+            execvp(cmd->executable_file_.c_str(), (char* const*)args.data());
+            perror("execvp");
+            exit(1);
+        },
+        stack + stack_size - 1, //child stack
+        CLONE_CHILD_SETTID | SIGCHLD, //Example flags - adjust as needed!
+        this);
+
+    free(stack); // Free the allocated stack after clone
+
+    if (pid > 0) {
         if (input_pipe_)  (*input_pipe_)->close_read_end();
         if (output_pipe_) (*output_pipe_)->close_write_end();
 
