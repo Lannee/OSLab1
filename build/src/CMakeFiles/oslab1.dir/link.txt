@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/oslab1.dir/main.cc.o CMakeFiles/oslab1.dir/cmd.cc.o CMakeFiles/oslab1.dir/token.cc.o -o ../bin/oslab1 

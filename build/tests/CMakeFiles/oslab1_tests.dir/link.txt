@@ -1,0 +1,2 @@
+/usr/bin/ar qc liboslab1_tests.a CMakeFiles/oslab1_tests.dir/test.cc.o
+/usr/bin/ranlib liboslab1_tests.a

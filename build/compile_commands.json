@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/egor/Документы/personal/itmoLab1OS/build",
+  "command": "/usr/bin/g++ -I/home/egor/Документы/personal/itmoLab1OS/src -g -std=gnu++23 -o src/CMakeFiles/oslab1.dir/main.cc.o -c /home/egor/Документы/personal/itmoLab1OS/src/main.cc",
+  "file": "/home/egor/Документы/personal/itmoLab1OS/src/main.cc",
+  "output": "src/CMakeFiles/oslab1.dir/main.cc.o"
+},
+{
+  "directory": "/home/egor/Документы/personal/itmoLab1OS/build",
+  "command": "/usr/bin/g++ -I/home/egor/Документы/personal/itmoLab1OS/src -g -std=gnu++23 -o src/CMakeFiles/oslab1.dir/cmd.cc.o -c /home/egor/Документы/personal/itmoLab1OS/src/cmd.cc",
+  "file": "/home/egor/Документы/personal/itmoLab1OS/src/cmd.cc",
+  "output": "src/CMakeFiles/oslab1.dir/cmd.cc.o"
+},
+{
+  "directory": "/home/egor/Документы/personal/itmoLab1OS/build",
+  "command": "/usr/bin/g++ -I/home/egor/Документы/personal/itmoLab1OS/src -g -std=gnu++23 -o src/CMakeFiles/oslab1.dir/token.cc.o -c /home/egor/Документы/personal/itmoLab1OS/src/token.cc",
+  "file": "/home/egor/Документы/personal/itmoLab1OS/src/token.cc",
+  "output": "src/CMakeFiles/oslab1.dir/token.cc.o"
+},
+{
+  "directory": "/home/egor/Документы/personal/itmoLab1OS/build",
+  "command": "/usr/bin/g++ -g -std=gnu++23 -o tests/CMakeFiles/oslab1_tests.dir/test.cc.o -c /home/egor/Документы/personal/itmoLab1OS/tests/test.cc",
+  "file": "/home/egor/Документы/personal/itmoLab1OS/tests/test.cc",
+  "output": "tests/CMakeFiles/oslab1_tests.dir/test.cc.o"
+}
+]

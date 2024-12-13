@@ -1,0 +1,11 @@
+/home/egor/Документы/personal/itmoLab1OS/build/CMakeFiles/test.dir
+/home/egor/Документы/personal/itmoLab1OS/build/CMakeFiles/edit_cache.dir
+/home/egor/Документы/personal/itmoLab1OS/build/CMakeFiles/rebuild_cache.dir
+/home/egor/Документы/personal/itmoLab1OS/build/src/CMakeFiles/oslab1.dir
+/home/egor/Документы/personal/itmoLab1OS/build/src/CMakeFiles/test.dir
+/home/egor/Документы/personal/itmoLab1OS/build/src/CMakeFiles/edit_cache.dir
+/home/egor/Документы/personal/itmoLab1OS/build/src/CMakeFiles/rebuild_cache.dir
+/home/egor/Документы/personal/itmoLab1OS/build/tests/CMakeFiles/oslab1_tests.dir
+/home/egor/Документы/personal/itmoLab1OS/build/tests/CMakeFiles/test.dir
+/home/egor/Документы/personal/itmoLab1OS/build/tests/CMakeFiles/edit_cache.dir
+/home/egor/Документы/personal/itmoLab1OS/build/tests/CMakeFiles/rebuild_cache.dir
